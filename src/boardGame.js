@@ -5,6 +5,8 @@ class BoardGame {
     this.position = []
     this.positionX = 0
     this.positionY = 0
+    this.directionsArray = ["N", "E", "S", "O"]
+    this.directionNumber = 0
     this.direction = "N"
   }
 
@@ -27,40 +29,21 @@ class BoardGame {
     }
   }
 
-  changePlayerDirectionR() {
-    if (this.direction === "N") {
-      this.direction = "E"
+  changePlayerDirection(move) {
+    if (move === "R") {
+      this.directionNumber = this.directionNumber + 1
+      if (this.directionNumber === 4) {
+        this.directionNumber = 0
+      }
+      this.direction = this.directionsArray[this.directionNumber]
       return
     }
-    if (this.direction === "E") {
-      this.direction = "S"
-      return
-    }
-    if (this.direction === "S") {
-      this.direction = "O"
-      return
-    }
-    if (this.direction === "O") {
-      this.direction = "N"
-      return
-    }
-  }
-
-  changePlayerDirectionL() {
-    if (this.direction === "N") {
-      this.direction = "O"
-      return
-    }
-    if (this.direction === "O") {
-      this.direction = "S"
-      return
-    }
-    if (this.direction === "S") {
-      this.direction = "E"
-      return
-    }
-    if (this.direction === "E") {
-      this.direction = "N"
+    if (move === "L") {
+      this.directionNumber = this.directionNumber - 1
+      if (this.directionNumber === -1) {
+        this.directionNumber = 3
+      }
+      this.direction = this.directionsArray[this.directionNumber]
       return
     }
   }

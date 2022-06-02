@@ -20,52 +20,54 @@ describe("Board Game", function () {
     expect(result).toEqual(expected)
   })
 
-  it("Moving a piece right", () => {
+  it("Changing piece direction to the right", () => {
     // set up
     const expected = [0, 0, "E"]
 
     // execute
-    boardGame.changePlayerDirectionR()
+    boardGame.changePlayerDirection("R")
     const result = boardGame.playerPosition()
 
     // verify
     expect(result).toEqual(expected)
   })
 
-  it("Moving a piece right x3", () => {
+  it("Check piece will be N when clicked right x4", () => {
+    // set up
+    const expected = [0, 0, "N"]
+
+    // execute
+    boardGame.changePlayerDirection("R")
+    boardGame.changePlayerDirection("R")
+    boardGame.changePlayerDirection("R")
+    boardGame.changePlayerDirection("R")
+    const result = boardGame.playerPosition()
+
+    // verify
+    expect(result).toEqual(expected)
+  })
+
+  it("Changing piece direction to the left", () => {
     // set up
     const expected = [0, 0, "O"]
 
     // execute
-    boardGame.changePlayerDirectionR()
-    boardGame.changePlayerDirectionR()
-    boardGame.changePlayerDirectionR()
+    boardGame.changePlayerDirection("L")
     const result = boardGame.playerPosition()
 
     // verify
     expect(result).toEqual(expected)
   })
 
-  it("Moving a piece left", () => {
+  it("Check piece will be N when clicked left x4", () => {
     // set up
-    const expected = [0, 0, "O"]
+    const expected = [0, 0, "N"]
 
     // execute
-    boardGame.changePlayerDirectionL()
-    const result = boardGame.playerPosition()
-
-    // verify
-    expect(result).toEqual(expected)
-  })
-
-  it("Moving a piece left x3", () => {
-    // set up
-    const expected = [0, 0, "E"]
-
-    // execute
-    boardGame.changePlayerDirectionL()
-    boardGame.changePlayerDirectionL()
-    boardGame.changePlayerDirectionL()
+    boardGame.changePlayerDirection("L")
+    boardGame.changePlayerDirection("L")
+    boardGame.changePlayerDirection("L")
+    boardGame.changePlayerDirection("L")
     const result = boardGame.playerPosition()
 
     // verify
@@ -78,7 +80,7 @@ describe("Board Game", function () {
 
     // execute
     boardGame.updatePosition()
-    boardGame.changePlayerDirectionR()
+    boardGame.changePlayerDirection("R")
     const result = boardGame.playerPosition()
 
     // verify
@@ -90,7 +92,7 @@ describe("Board Game", function () {
     const expected = [0, 0, "O"]
 
     // execute
-    boardGame.changePlayerDirectionL()
+    boardGame.changePlayerDirection("L")
     boardGame.checkMove("M")
     boardGame.updatePosition()
     const result = boardGame.playerPosition()
@@ -125,7 +127,7 @@ describe("Board Game", function () {
     const expected = [4, 0, "E"]
 
     // execute
-    boardGame.changePlayerDirectionR()
+    boardGame.changePlayerDirection("R")
     boardGame.checkMove("M")
     boardGame.updatePosition()
     boardGame.checkMove("M")
@@ -147,8 +149,8 @@ describe("Board Game", function () {
     const expected = [0, 0, "S"]
 
     // execute
-    boardGame.changePlayerDirectionL()
-    boardGame.changePlayerDirectionL()
+    boardGame.changePlayerDirection("L")
+    boardGame.changePlayerDirection("L")
     boardGame.checkMove("M")
     boardGame.updatePosition()
     const result = boardGame.playerPosition()
@@ -163,11 +165,11 @@ describe("Board Game", function () {
     const expectedTwo = [3, 2, "N"]
 
     // execute
-    boardGame.changePlayerDirectionR()
+    boardGame.changePlayerDirection("R")
     boardGame.updatePosition()
     boardGame.updatePosition()
     boardGame.updatePosition()
-    boardGame.changePlayerDirectionL()
+    boardGame.changePlayerDirection("L")
     boardGame.updatePosition()
     boardGame.updatePosition()
     boardGame.checkMove("M")
